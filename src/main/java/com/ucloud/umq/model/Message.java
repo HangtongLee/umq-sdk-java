@@ -33,4 +33,13 @@ public class Message {
     public void setMsgTime(int msgTime) {
         MsgTime = msgTime;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "MsgId='" + MsgId + '\'' +
+                ", MsgBody='" + MsgBody + '\'' +
+                ", MsgTime=" + MsgTime +
+                '}';
+    }
 }

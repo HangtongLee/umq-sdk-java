@@ -1,6 +1,7 @@
 package com.ucloud.umq.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ucloud.umq.action.MessageData;
 
 /**
  * Created by alpha on 8/5/16.
@@ -11,35 +12,6 @@ public class WebsocketConsumedMessageResponse {
     @JsonProperty("Request") private String Request;
     @JsonProperty("Message") private String Message;
     @JsonProperty("Data") private MessageData Data;
-
-    public class MessageData {
-        @JsonProperty("MsgBody") private String MsgBody;
-        @JsonProperty("MsgId") private String MsgId;
-
-        public String getMsgBody() {
-            return MsgBody;
-        }
-
-        public void setMsgBody(String msgBody) {
-            MsgBody = msgBody;
-        }
-
-        public String getMsgId() {
-            return MsgId;
-        }
-
-        public void setMsgId(String msgId) {
-            MsgId = msgId;
-        }
-
-        @Override
-        public String toString() {
-            return "MessageData{" +
-                    "MsgBody='" + MsgBody + '\'' +
-                    ", MsgId='" + MsgId + '\'' +
-                    '}';
-        }
-    }
 
     public String getAction() {
         return Action;

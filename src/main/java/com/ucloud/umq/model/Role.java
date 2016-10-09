@@ -36,4 +36,13 @@ public class Role {
     public void setCreateTime(int createTime) {
         CreateTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "Id='" + Id + '\'' +
+                ", Token='" + Token + '\'' +
+                ", CreateTime=" + CreateTime +
+                '}';
+    }
 }

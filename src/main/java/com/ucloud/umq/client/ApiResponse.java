@@ -26,6 +26,18 @@ public class ApiResponse {
     @JsonProperty("TotalCount")
     private int TotalCount;
 
+    public String getRequest() {
+        return Request;
+    }
+
+    public void setRequest(String request) {
+        Request = request;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonProperty("Request")
+    private String Request;
+
     public int getRetCode() {
         return RetCode;
     }

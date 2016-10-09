@@ -41,9 +41,11 @@ public class UcloudApiClient {
     public String get(String uri, Map<String, Object> params) {
         client = HttpClientBuilder.create().build();
         params.put("PublicKey", this.publicKey);
+        /*
         if (this.projectId != null && !this.projectId.equals("")) {
             params.put("ProjectId", this.projectId);
         }
+        */
 
         String signature = null;
         try {
@@ -82,6 +84,40 @@ public class UcloudApiClient {
         }
         return null;
     }
+
+    public String rawGet(String url, Map<String, Object> params) {
+        client = HttpClientBuilder.create().build();
+
+        String query = MapQuery.urlEncodeUTF8(params);
+
+        String finalUrl = url + "/?" + query;
+        HttpGet getRequest = new HttpGet(finalUrl);
+        System.out.println("query uri "+ getRequest.getURI());
+        getRequest.addHeader("accept", "application/json");
+
+        HttpResponse response = null;
+        try {
+            response = client.execute(getRequest);
+            int statusCode = response.getStatusLine().getStatusCode();
+
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+
+            StringBuffer result = new StringBuffer();
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                result.append(line);
+            }
+
+            System.out.println("response: " + result.toString());
+            return result.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     private String verify(Map<String, Object> params) throws NoSuchAlgorithmException {
 

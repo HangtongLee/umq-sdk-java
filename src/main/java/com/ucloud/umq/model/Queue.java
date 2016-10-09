@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-/**
- * Created by alpha on 8/8/16.
- */
 public class Queue {
     @JsonProperty("QueueId")
     private String QueueId;
@@ -97,5 +94,20 @@ public class Queue {
 
     public void setConsumers(List<Role> consumers) {
         this.consumers = consumers;
+    }
+
+    @Override
+    public String toString() {
+        return "Queue{" +
+                "QueueId='" + QueueId + '\'' +
+                ", QueueName='" + QueueName + '\'' +
+                ", PushType='" + PushType + '\'' +
+                ", MsgTTL=" + MsgTTL +
+                ", CreateTime=" + CreateTime +
+                ", HttpAddr='" + HttpAddr + '\'' +
+                ", QoS='" + QoS + '\'' +
+                ", publishers=" + publishers +
+                ", consumers=" + consumers +
+                '}';
     }
 }
