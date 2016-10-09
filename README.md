@@ -11,11 +11,35 @@ params
 |      Name      |  Type   | Description | Required |
 | :------------ | :----- | :--------- | :------ |
 |    host        | String  |   服务地址   |   Yes    |
+|    region     | String  |   地域   |   Yes    |
 |  publicKey   | String  |    用户公钥    |   Yes    |
 | privateKey | String  |  用户私钥  |   Yes    |
-|    region     | String  |   地域   |   Yes    |
-|    account     | String  |   账户邮箱  |   Yes    |
-|    projectId     | String  | 项目Id |   Yes    |
+|    account     | String  |   登陆控制台的邮箱  |   Yes    |
+|   projectId     | String  | 项目Id |   Yes    |
+
+host, region 获取方法:
+
+请参照下表填写host与region的值:
+
+| 地域 | region | 内网host | 外网host |
+| :--- | :----- | :------ | :------ |
+| 北京二| cn-bj2 | air.bj2.umq.service.ucloud.cn:6318 | umq-bj2.service.ucloud.cn:6328 |
+| 广东 | cn-gd | mars.gd.umq.service.ucloud.cn:6318 | 暂未部署 |
+| 香港 | hk | pacific.gd.umq.service.ucloud.cn:6318 | 暂未部署 |
+
+内网host只能从UCloud的云主机上发起访问;外网host可以从公网发起访问.
+
+projectId 获取办法:
+
+如下图所示，从控制台上获取.
+
+![如何获取projectId](project_id.png)
+
+publicKey, privateKey 获取方法:
+
+如下图所示，从控制台上API密钥页面获取.
+
+![如何获取key](get_key.png)
 
 ## 2.操作queue
 
@@ -27,17 +51,17 @@ Params
 
 |   Name    |  Type   |               Description                | Required |
 | :------- | :----- | :-------------------------------------- | :------ |
-| couponId  | String  |                  优惠券Id                   |    Yes    |
-|  remark   | String  |                  域名组描述                   |    Yes    |
+| couponId  | String  |                  优惠券Id。如果没有优惠券，改值赋值为null |    Yes    |
+|  remark   | String  |                  业务组描述                   |    Yes    |
 | queueName | String  |                业务组信息/队列名                 |   Yes    |
 | pushType  | String |      发送方式。枚举值:"Direct", 直接推送; "Fanout", 广播推送      |   Yes    |
-|    qoS    | String  | 是否需要对消费进行服务质量管控。枚举值为: "Yes",表示消费消息时客户端需要确认消息已收到(Ack模式)；"No",表示消费消息时不需要确认(NoAck模式). |    Yes    |
+|    qos    | String  | 是否需要对消费进行服务质量管控。枚举值为: "Yes",表示消费消息时客户端需要确认消息已收到(Ack模式)；"No",表示消费消息时不需要确认(NoAck模式). |    Yes    |
 
 Return
 
 |  Name   |  Type   |      Description       |
 | :----- | :----- | :-------------------- |
-| queueID|  String  | 生成的queue id |
+| queueId|  String  | 生成的queue id |
 
 Throws
 
